@@ -8,4 +8,4 @@
 | Yun SungHo     | Designer  |
 | Lee Hayung     | Presentation |
 | Nam YunJae     | Developer |
-| Lee Gukgon     | secretary |
+| Lee Gukgon     | Secretary |
