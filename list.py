@@ -1,5 +1,4 @@
 import sqlite3
-
 conn = sqlite3.connect("task.db")
 cur = conn.cursor()
 # table col : id, what, due, importance, category, finished
