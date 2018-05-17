@@ -9,6 +9,7 @@ def create_table():
             id integer primary key autoincrement,
             what text not null,
             due text not null,
+            category text not null,
             finished integer); """
     cur.execute(table_create_sql)
     conn.commit()
