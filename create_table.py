@@ -1,9 +1,9 @@
 import sqlite3
 
-def create_table():
+conn = sqlite3.connect("task.db")
+cur = conn.cursor()
 
-    conn = sqlite3.connect("task.db")
-    cur = conn.cursor()
+def create_table():
 
     table_create_sql = """create table if not exists todo (
             id integer primary key autoincrement,
