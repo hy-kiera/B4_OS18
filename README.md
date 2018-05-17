@@ -6,6 +6,6 @@
 |----------------|-----------|
 | Moon SeongIn   | PM        |
 | Yun SungHo     | Designer  |
-| Lee Hayung     | Presentation |
+| Lee Hayung     | Presenter |
 | Nam YunJae     | Developer |
 | Lee Gukgon     | Secretary |
