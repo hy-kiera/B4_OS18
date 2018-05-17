@@ -5,7 +5,7 @@ def add_todo():
     sql = "insert into todo (what,due,category,finished) values (?,?,?,?)"
 
     what = input("What? ")
-    due = input("Due? ")
+    due = input("Due? yyyy-mm-dd hh:mm:ss")
     category = input("Category? ")
 
     cur.execute(sql, (what,due,category,0))
