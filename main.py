@@ -9,19 +9,21 @@ import category as ctg
 
 def run_program():
 	while True:
-		i = input("choose what to do\n(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? ")
-		if (i == 'a' or 'A'):
+		print("Choose what to do")
+		mode = str(input("(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? "))
+		print(mode)
+		if mode == 'a' or 'A':
 			at.add_todo()
-		elif (i == 'l' or 'L'):
+		elif mode == 'l' or 'L':
 			li.list_todo_due()
-		elif (i == 'm' or 'M'):
+		elif mode == 'm' or 'M':
 			md.modify_todo()
-		elif (i == 'd' or 'D'):
+		elif mode == 'd' or 'D':
 			dl.del_todo()
-		elif ( i == 'c' or 'C'):
+		elif mode == 'c' or 'C':
 			ctg.show_category()
-		elif (i == 'q' or 'Q'):
-			return
+		elif mode == 'q' or 'Q':
+			break
 
 if __name__ == "__main__":
     lg.print_logo()
