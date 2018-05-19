@@ -11,6 +11,21 @@ def modify_todo():
         print(row[5], row[3], row[1], row[2], row[4])
 
     modify = str(input("What todo do you want to modify? Please enter 'what' "))
+
+    # check whether there is the modify val in table
+    cmp_data = "select distinct what from todo"
+    cur.execute(cmp_data)
+    cmp_records = cur.fetchall()
+    cmp_list = []
+    for i in range(len(cmp_records)):
+        cmp_list.append(cmp_records[i][0])
+    while True:
+        if not modify in cmp_list:
+            print("There is not", modify, "Please enter the 'what' in table")
+            modify = str(input())
+        else:
+            break
+    
     what_m = str(input("What? "))
     due_m = str(input("Due date? (yyyy-mm-dd hh:mm:ss) "))
     importance_m = int(input("Importance? "))

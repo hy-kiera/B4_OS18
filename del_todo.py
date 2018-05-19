@@ -14,6 +14,20 @@ def del_todo():
 
     delete_data = str(input("What todo do you delete? Please enter the 'what' "))
 
+    # check whether there is the delete_data val in table
+    cmp_data = "select distinct what from todo"
+    cur.execute(cmp_data)
+    cmp_records = cur.fetchall()
+    cmp_list = []
+    for i in range(len(cmp_records)):
+        cmp_list.append(cmp_records[i][0])
+    while True:
+        if not delete_data in cmp_list:
+            print("There is not", delete_data, "Please enter the 'what' in table")
+            delete_data = str(input())
+        else:
+            break
+
     del_record = "delete from todo where what = ?"
     cur.execute(del_record, [delete_data])
     conn.commit()
