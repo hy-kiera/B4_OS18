@@ -12,17 +12,17 @@ def run_program():
 		print("Choose what to do")
 		mode = str(input("(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? "))
 		print(mode)
-		if mode == 'a' or 'A':
+		if mode == 'a' or mode == 'A':
 			at.add_todo()
-		elif mode == 'l' or 'L':
+		elif mode == 'l' or mode == 'L':
 			li.list_todo_due()
-		elif mode == 'm' or 'M':
+		elif mode == 'm' or mode == 'M':
 			md.modify_todo()
-		elif mode == 'd' or 'D':
+		elif mode == 'd' or mode == 'D':
 			dl.del_todo()
-		elif mode == 'c' or 'C':
+		elif mode == 'c' or mode == 'C':
 			ctg.show_category()
-		elif mode == 'q' or 'Q':
+		elif mode == 'q' or mode == 'Q':
 			break
 
 if __name__ == "__main__":
