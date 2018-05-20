@@ -4,18 +4,22 @@ def modify_todo():
     conn = sqlite3.connect("task.db")
     cur = conn.cursor()
 
-    sql = "update todo set what=?, due=?, category=?, finished=? where id=?"
+    slct_data = "select * from todo where 1 order by what asc"
+    cur.execute(slct_data)
+    records = cur.fetchall()
+    for row in records:
+        print(row[5], row[3], row[1], row[2], row[4])
 
-    id_num = input("Record id? ")
-    what_m = input("Todo? ")
-    due_m = input("Due date? (yyyy-mm-dd hh:mm:ss) ")
-    importance_m = input("Importance? ")
-    category_m = input("Category? ")
-    finished_m = input("Finished (1: yes, 0: no)? ")
+    modify = str(input("What todo do you want to modify? Please enter 'what' "))
+    what_m = str(input("What? "))
+    due_m = str(input("Due date? (yyyy-mm-dd hh:mm:ss) "))
+    importance_m = int(input("Importance? "))
+    category_m = str(input("Category? "))
+    finished_m = int(input("Finished (1: yes, 0: no)? "))
 
-    cur.execute(sql, (what_m,due_m,importance_m,category_m,finished_m,id_num))
+    sql = "update todo set what = ?, due = ?, importance = ?, category = ?, finished = ? where what = ?"
+
+    cur.execute(sql, (what_m, due_m, importance_m, category_m, finished_m, modify))
     conn.commit()
 
-    sql = "select * from todo where 1"
-    cur.execute(sql)
     print("")

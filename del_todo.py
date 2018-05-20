@@ -12,9 +12,12 @@ def del_todo():
     for row in records:
         print(row[5], row[3], row[1], row[2], row[4])
 
-    delete_data = str(input("What todo do you delete? Please enter the 'what'."))
+    delete_data = str(input("What todo do you delete? Please enter the 'what' "))
 
-    del_record = "delet from todo where what = ?"
-    cur.execute(del_record, delete_data)
+    del_record = "delete from todo where what = ?"
+    cur.execute(del_record, [delete_data])
+    conn.commit()
 
-    print("Deleted")
+    print("Deleted", delete_data)
+
+    print("")

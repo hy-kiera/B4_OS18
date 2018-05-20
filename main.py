@@ -11,7 +11,6 @@ def run_program():
 	while True:
 		print("Choose what to do")
 		mode = str(input("(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? "))
-		print(mode)
 		if mode == 'a' or mode == 'A':
 			at.add_todo()
 		elif mode == 'l' or mode == 'L':
