@@ -42,10 +42,13 @@ def list_todo_category(category):	# 가나다순
 	print("")
 
 def list_main():
-	opt = int(input("(1: due, 2: what, 3: importance, 4: category)? "))
+	opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
+	while not opt.isdigit():
+		opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
+	opt = int(opt)
 	while opt < 1 or opt > 4:
 		opt = int(input("(1: due, 2: what, 3: importance, 4: category)? "))
-	if opt == 1:	
+	if opt == 1:
 		list_todo_due()
 	elif opt == 2:
 		list_todo_what()
