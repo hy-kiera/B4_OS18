@@ -1,4 +1,5 @@
 import sqlite3
+import duecheck as dc
 
 def modify_todo():
     conn = sqlite3.connect("task.db")
@@ -26,15 +27,54 @@ def modify_todo():
         else:
             break
     
+    org_data = "select * from todo where what = ?"
+    cur.execute(org_data, [modify])
+    org_record = cur.fetchall()
+    # table col : id, what, due, importance, category, finished
+
+    print(org_record[0][1], org_record[0][2], org_record[0][3], org_record[0][4], org_record[0][5])
+    
     what_m = str(input("What? "))
-    due_m = str(input("Due date? (yyyy-mm-dd hh:mm:ss) "))
-    importance_m = int(input("Importance? "))
+    if what_m == '':
+        what_m = org_record[0][1]
+
+    while True:
+        due_m = str(input("Due? (yyyy-mm-dd hh:mm:ss) "))
+        if dc.isdue(due_m):
+            break
+        elif due_m == '':
+            due_m = org_record[0][2]
+            break
+        else:
+            print('Invaild input! Please check your input')
+
+    while True:
+        importance_m = str(input("Importance? (1 ~ 5) "))
+        if importance_m == '':
+            importance_m = org_record[0][3]
+            break
+        elif importance_m.isdigit() and 1 <= int(importance_m) <= 5:
+            break
+        else:
+            print('Invaild input! Please check your input')
+
     category_m = str(input("Category? "))
-    finished_m = int(input("Finished (1: yes, 0: no)? "))
+    if category_m == '':
+        category_m = org_record[0][4]
+
+    while True:
+        finished_m = input("Finished (1: yes, 0: no)? ")
+        if finished_m == '':
+            finished_m = org_record[0][5]
+            break
+        elif finished_m.isdigit() and (finished_m == '1' or finished_m == '0'):
+            break
+        else:
+            print('Invaild input! Please check your input')
 
     sql = "update todo set what = ?, due = ?, importance = ?, category = ?, finished = ? where what = ?"
 
-    cur.execute(sql, (what_m, due_m, importance_m, category_m, finished_m, modify))
+    cur.execute(sql, (what_m, due_m, int(importance_m), category_m, int(finished_m), modify))
     conn.commit()
 
     print("")
