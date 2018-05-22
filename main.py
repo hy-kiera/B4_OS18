@@ -14,7 +14,7 @@ def run_program():
 		if mode == 'a' or mode == 'A':
 			at.add_todo()
 		elif mode == 'l' or mode == 'L':
-			li.list_todo_due()
+			li.list_main()
 		elif mode == 'm' or mode == 'M':
 			md.modify_todo()
 		elif mode == 'd' or mode == 'D':
