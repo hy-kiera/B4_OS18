@@ -11,7 +11,7 @@ def create_table():
             due text not null,
             importance integer,
             category text not null,
-            finished integer); """
+            finished text not null); """
     cur.execute(table_create_sql)
     conn.commit()
     conn.close()

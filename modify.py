@@ -24,13 +24,17 @@ def modify_todo():
             print("There is not", modify, "Please enter the 'what' in table")
             modify = str(input())
         else:
-            break
+			break
     
     what_m = str(input("What? "))
     due_m = str(input("Due date? (yyyy-mm-dd hh:mm:ss) "))
     importance_m = int(input("Importance? "))
     category_m = str(input("Category? "))
-    finished_m = int(input("Finished (1: yes, 0: no)? "))
+	while True:
+		finished_m = int(input("Finished (y: yes, n: no)? "))
+		if (finished_m == y) | |(finished_m == n):
+			break
+
 
     sql = "update todo set what = ?, due = ?, importance = ?, category = ?, finished = ? where what = ?"
 

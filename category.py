@@ -8,10 +8,6 @@ def show_category():
     cur.execute(slct_data)
     records = cur.fetchall()
     for row in records:
-<<<<<<< HEAD
-        print(row[0])
-=======
         print(row[0])
 
     print("")
->>>>>>> 945079e0ae26e38c73bf8c8c331baa19f551c407
