@@ -25,6 +25,6 @@ def run_program():
 			break
 
 if __name__ == "__main__":
-    lg.print_logo()
-    ct.create_table()
-    run_program()
+	lg.print_logo()
+	ct.create_table()
+	run_program()
