@@ -6,11 +6,13 @@ import create_table as ct
 import modify as md
 import del_todo as dl
 import category as ctg
+import auto_finish as af
 
 def run_program():
 	while True:
 		print("Choose what to do")
 		mode = str(input("(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? "))
+		af.auto_fin()
 		if mode == 'a' or mode == 'A':
 			at.add_todo()
 		elif mode == 'l' or mode == 'L':
@@ -23,7 +25,8 @@ def run_program():
 			ctg.show_category()
 		elif mode == 'q' or mode == 'Q':
 			break
-
+		af.auto_fin()
+		
 if __name__ == "__main__":
 	lg.print_logo()
 	ct.create_table()
