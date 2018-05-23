@@ -59,22 +59,22 @@ def modify_todo():
 			print('Invaild input! Please check your input')
 
 	category_m = str(input("Category? "))
+
 	if category_m == '':
 		category_m = org_record[0][4]
 
 	while True:
-		finished_m = input("Finished (1: yes, 0: no)? ")
+		finished_m = input("Finished (y: yes, n: no)? ")
 		if finished_m == '':
 			finished_m = org_record[0][5]
 			break
-		elif finished_m.isdigit() and (finished_m == '1' or finished_m == '0'):
+		elif finished_m == 'y' or finished_m == 'n':
 			break
 		else:
 			print('Invaild input! Please check your input')
 
 	sql = "update todo set what = ?, due = ?, importance = ?, category = ?, finished = ? where what = ?"
 
-	cur.execute(sql, (what_m, due_m, int(importance_m), category_m, int(finished_m), modify))
+	cur.execute(sql, (what_m, due_m, int(importance_m), category_m, finished_m, modify))
 	conn.commit()
-
 	print("")

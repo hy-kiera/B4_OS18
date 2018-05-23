@@ -37,7 +37,7 @@ def add_todo():
     if category == '':
         category = 'GENERAL'
 
-    data = [what, due, int(importance), category, 0]
+    data = [what, due, int(importance), category, "n"]
 
     cur.execute(sql, data)
     conn.commit()
