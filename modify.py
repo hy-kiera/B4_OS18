@@ -77,5 +77,4 @@ def modify_todo():
 
 	cur.execute(sql, (what_m, due_m, int(importance_m), category_m, finished_m, modify))
 	conn.commit()
-
 	print("")
