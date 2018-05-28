@@ -14,16 +14,14 @@ import inquirer
 def run_program():
 	while True:
 		print("Choose what to do")
-		# mode = str(input("(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? "))
 		af.auto_fin()
 		mode = [
-				inquirer.List('mode',
+			inquirer.List('mode',
 				message="Choose what to do",
 				choices=['Add todo', 'List todo', 'Modify todo', 'Delete todo', 'Show category', 'Quit'],
 			),
 		]
 		answers = inquirer.prompt(mode)
-		print(answers)
 		if answers['mode'] == 'Add todo':
 			at.add_todo()
 		elif answers['mode'] == 'List todo':

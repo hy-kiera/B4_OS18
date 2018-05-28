@@ -1,6 +1,8 @@
 import sqlite3
 import category as ctg
 
+import inquirer
+
 conn = sqlite3.connect("task.db")
 cur = conn.cursor()
 # table col : id, what, due, importance, category, finished
@@ -42,19 +44,38 @@ def list_todo_category(category):	# 가나다순
 	print("")
 
 def list_main():
-	opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
-	while not opt.isdigit():
-		opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
-	opt = int(opt)
-	while opt < 1 or opt > 4:
-		opt = int(input("(1: due, 2: what, 3: importance, 4: category)? "))
-	if opt == 1:
+	opt = [
+			inquirer.List('opt',
+				message="Choose list option",
+				choices=['due', 'what', 'importance', 'category'],
+			),
+		]
+	answers = inquirer.prompt(opt)
+	
+	if answers['opt'] == 'due':
 		list_todo_due()
-	elif opt == 2:
+	elif answers['opt'] == 'what':
 		list_todo_what()
-	elif opt == 3:
+	elif answers['opt'] == 'importance':
 		list_todo_importance()
-	elif opt == 4:
+	elif answers['opt'] == 'category':
 		ctg.show_category()
 		c = str(input("What cateogry do you want to list? "))
+
+		# category 선택을 List를 이용해서 하고 싶은데, choices = cmp_list 부분에서 오류가 난다.
+		# ctg_data = "select distinct category from todo where 1 order by category asc"
+		# cur.execute(ctg_data)
+		# records = cur.fetchall()
+		# cmp_list = []
+		# for i in range(len(records)):
+		# 	cmp_list.append(records[i][0])
+		# category = [
+		# 		inquirer.List('category',
+		# 			message="Choose category which you want to list",
+		# 			choices=cmp_list
+		# 		),
+		# ]
+
+		# ctg_answers = inquirer.prompt(category)
+
 		list_todo_category(c)
