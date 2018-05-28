@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 import sqlite3
 import category as ctg
 
@@ -10,7 +11,10 @@ def list_todo_due():
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
 	for row in records:
-		print(row[5], row[3], row[1], row[2], row[4])
+		if(row[5]=='n'):
+			print('☐', row[3], row[1], row[2], row[4])
+		else:
+			print('☑', row[3], row[1], row[2], row[4])
 
 	print("")
 

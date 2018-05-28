@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 import sqlite3
 import duecheck as dc
 
@@ -26,14 +27,14 @@ def modify_todo():
 			modify = str(input())
 		else:
 			break
-	
+
 	org_data = "select * from todo where what = ?"
 	cur.execute(org_data, [modify])
 	org_record = cur.fetchall()
 	# table col : id, what, due, importance, category, finished
 
 	print(org_record[0][1], org_record[0][2], org_record[0][3], org_record[0][4], org_record[0][5])
-	
+
 	what_m = str(input("What? "))
 	if what_m == '':
 		what_m = org_record[0][1]
