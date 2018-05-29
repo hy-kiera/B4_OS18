@@ -1,5 +1,7 @@
 import sqlite3
 import category as ctg
+from prettytable import PrettyTable
+
 
 conn = sqlite3.connect("task.db")
 cur = conn.cursor()
@@ -9,36 +11,65 @@ def list_todo_due():
 	slct_data = "select * from todo where finished = ? order by due asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	for row in records:
-		print(row[5], row[3], row[1], row[2], row[4])
+	
+	    
+	x = PrettyTable()
 
+	x.field_names = ["Finished", "Importance", "What", "due", "category"]
+
+	
+	for row in records:
+		x.add_row([row[5], row[3], row[1], row[2], row[4]])
+	if not len(records) == 0:
+		print(x)
 	print("")
 
 def list_todo_importance():
 	slct_data = "select * from todo where finished = ? order by importance asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	for row in records:
-		print(row[5], row[3], row[1], row[2], row[4])
+	    
+	x = PrettyTable()
 
+	x.field_names = ["Finished", "Importance", "What", "due", "category"]
+
+	
+	for row in records:
+		x.add_row([row[5], row[3], row[1], row[2], row[4]])
+	if not len(records) == 0:
+		print(x)
 	print("")
 
 def list_todo_what():
 	slct_data = "select * from todo where finished = ? order by what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	for row in records:
-		print(row[5], row[3], row[1], row[2], row[4])
+	    
+	x = PrettyTable()
 
+	x.field_names = ["Finished", "Importance", "What", "due", "category"]
+
+	
+	for row in records:
+		x.add_row([row[5], row[3], row[1], row[2], row[4]])
+	if not len(records) == 0:
+		print(x)
 	print("")
 
 def list_todo_category(category):	# 가나다순
 	slct_data = "select * from todo where category = ? and finished = ? order by category asc"
 	cur.execute(slct_data, [category,'n'])
 	records = cur.fetchall()
-	for row in records:
-		print(row[5], row[3], row[1], row[2])
+	    
+	x = PrettyTable()
 
+	x.field_names = ["Finished", "Importance", "What", "due", "category"]
+
+	
+	for row in records:
+		x.add_row([row[5], row[3], row[1], row[2], row[4]])
+	if not len(records) == 0:
+		print(x)
 	print("")
 
 def list_main():
@@ -56,5 +87,5 @@ def list_main():
 		list_todo_importance()
 	elif opt == 4:
 		ctg.show_category()
-		c = str(input("What cateogry do you want to list? "))
+		c = str(input("What category do you want to list? "))
 		list_todo_category(c)
