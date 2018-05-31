@@ -1,7 +1,7 @@
 import sqlite3
 import logo as lg
 import add_todo as at
-import list as li
+import ls as li
 import create_table as ct
 import modify as md
 import del_todo as dl
@@ -9,7 +9,6 @@ import category as ctg
 import auto_finish as af
 
 import inquirer
-
 
 def run_program():
 	while True:
