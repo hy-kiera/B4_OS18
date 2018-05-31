@@ -25,7 +25,7 @@ def list_todo_due():
 	print("")
 
 def list_todo_importance():
-	slct_data = "select * from todo where finished = ? order by importance asc, what asc"
+	slct_data = "select * from todo where finished = ? order by importance desc, what desc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
 
