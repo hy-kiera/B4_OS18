@@ -2,6 +2,7 @@ import sqlite3
 import category as ctg
 from prettytable import PrettyTable
 
+
 import inquirer
 
 conn = sqlite3.connect("task.db")
