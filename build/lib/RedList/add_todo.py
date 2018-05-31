@@ -2,6 +2,8 @@ import sqlite3
 import create_table as ct
 import duecheck as dc
 
+import inquirer
+
 def add_todo():
     conn = sqlite3.connect("task.db")
     cur = conn.cursor()
@@ -37,7 +39,7 @@ def add_todo():
     if category == '':
         category = 'GENERAL'
 
-    data = [what, due, int(importance), category, "n"]
+    data = [what, due, importance, category, "n"]
 
     cur.execute(sql, data)
     conn.commit()
