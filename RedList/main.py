@@ -1,29 +1,37 @@
 import sqlite3
 import logo as lg
 import add_todo as at
-import list as li
+import ls as li
 import create_table as ct
 import modify as md
 import del_todo as dl
 import category as ctg
 import auto_finish as af
 
+import inquirer
+
 def run_program():
 	while True:
 		print("Choose what to do")
-		mode = str(input("(a: Add todo, l: list todo, m: Modify todo, d: Delete todo, c: Show category q:Quit)? "))
 		af.auto_fin()
-		if mode == 'a' or mode == 'A':
+		mode = [
+			inquirer.List('mode',
+				message="Choose what to do",
+				choices=['Add todo', 'List todo', 'Modify todo', 'Delete todo', 'Show category', 'Quit'],
+			),
+		]
+		answers = inquirer.prompt(mode)
+		if answers['mode'] == 'Add todo':
 			at.add_todo()
-		elif mode == 'l' or mode == 'L':
+		elif answers['mode'] == 'List todo':
 			li.list_main()
-		elif mode == 'm' or mode == 'M':
+		elif answers['mode'] == 'Modify todo':
 			md.modify_todo()
-		elif mode == 'd' or mode == 'D':
+		elif answers['mode'] == 'Delete todo':
 			dl.del_todo()
-		elif mode == 'c' or mode == 'C':
+		elif answers['mode'] == 'Show category':
 			ctg.show_category()
-		elif mode == 'q' or mode == 'Q':
+		elif answers['mode'] == 'Quit':
 			break
 		af.auto_fin()
 		
