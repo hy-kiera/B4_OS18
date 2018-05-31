@@ -2,11 +2,27 @@ import sqlite3
 import create_table as ct
 import duecheck as dc
 
+import inquirer
+
 def add_todo():
     conn = sqlite3.connect("task.db")
     cur = conn.cursor()
 
     sql = "insert into todo (what, due, importance, category, finished) values (?, ?, ?, ?, ?)"
+
+    # lambda를 어떻게 작성해야 할지 모르겠어요.
+    
+    # questions = [
+    #     inquirer.Text('what', message="What?"),
+    #     inquirer.Text('due', message="Due? (yyyy-mm-dd hh:mm:ss)",
+    #             validate=lambda x, _: re.match('\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d', x),
+    #             ),
+    #     inquirer.Text('importance', message="Importance? (1 ~ 5)",
+    #             validate=lambda x, _: re.match('\d', x),
+    #             ),
+    #     inquirer.Text('category', message="Category?"),
+    #     ]
+    # answers = inquirer.prompt(questions)
 
     while True:
         what = str(input("What? "))
@@ -37,7 +53,8 @@ def add_todo():
     if category == '':
         category = 'GENERAL'
 
-    data = [what, due, int(importance), category, "n"]
+    # data = [answers['what'], answers['due'], int(answers['importance']), answers['category'], "n"]
+    data = [what, due, importance, category, "n"]
 
     cur.execute(sql, data)
     conn.commit()
