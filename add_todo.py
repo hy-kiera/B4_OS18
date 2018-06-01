@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 import sqlite3
 import create_table as ct
 import duecheck as dc

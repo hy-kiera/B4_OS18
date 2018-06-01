@@ -2,7 +2,6 @@ import sqlite3
 import category as ctg
 from prettytable import PrettyTable
 
-
 import inquirer
 
 conn = sqlite3.connect("task.db")
@@ -10,6 +9,7 @@ cur = conn.cursor()
 # table col : id, what, due, importance, category, finished
 
 def list_todo_due():
+	""""show todo list by due"""
 	slct_data = "select * from todo where finished = ? order by due asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
@@ -27,6 +27,7 @@ def list_todo_due():
 	print("")
 
 def list_todo_importance():
+	"""show todo list by importance"""
 	slct_data = "select * from todo where finished = ? order by importance asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
@@ -43,6 +44,7 @@ def list_todo_importance():
 	print("")
 
 def list_todo_what():
+	"""show todo list by what"""
 	slct_data = "select * from todo where finished = ? order by what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
@@ -59,6 +61,7 @@ def list_todo_what():
 	print("")
 
 def list_todo_category(category):	# 가나다순
+	"""show todo list in category that usr selected"""
 	slct_data = "select * from todo where category = ? and finished = ? order by category asc"
 	cur.execute(slct_data, [category,'n'])
 	records = cur.fetchall()

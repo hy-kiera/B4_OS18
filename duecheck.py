@@ -19,7 +19,7 @@ def isdue(due):
 	return (1000<=int(date[0]) and int(date[0])<=9999) and (1<=int(date[1]) and int(date[1])<=12) and (1<=int(date[2]) and int(date[2])<=31) and (0<=int(time[0]) and int(time[0])<=24) and (0<=int(time[1]) and int(time[1])<=60) and (0<=int(time[2]) and int(time[2])<=60)
 
 def istime(due):
-    #False if time has passed, True if time has not passed
+    """False if time has passed, True if time has not passed"""
     import datetime
     dNt = due.split(' ')
     d = dNt[0].split('-')
