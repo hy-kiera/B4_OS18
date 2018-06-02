@@ -1,20 +1,23 @@
-from setuptools import setup, find_packages
+from os.path import abspath, dirname, join
+from setuptools import find_packages, setup
+
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 
 setup(
-    name             = 'RedList',
-    version          = '0.1',
-    description      = 'The Open Source CLI Todo List',
-    author           = 'Hayeong Lee',
-    author_email     = 'bb.kiera@gmail.com',
-    url              = 'https://github.com/Ramenseller/RedList',
+    name = 'redlist',
+    version = '0.1',
+    description = 'A simple schedule managing cli app',
+    long_description = long_description,
+    long_description_content_type='text/markdown',
+    url = 'https://github.com/Ramenseller/RedList',
     download_url     = 'https://github.com/Ramenseller/RedList/archive/master.tar.gz',
-    install_requires = [ ],
-    packages         = find_packages(exclude = [ ]),
-    keywords         = ['todo list', 'todo cli', 'task manager'],
-    python_requires  = '>=3',
-    package_data     =  {'RedList' : [ 'LICENSE' ]},
-    zip_safe = False,
-    classifiers      = [
+    author = 'Hayeong Lee',
+    author_email = 'bb.kiera@gmail.com',
+    license = 'MIT LICENSE',
+    classifiers = [
         'Environment :: Consol',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
@@ -24,9 +27,12 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6'
     ],
+    keywords = ['todo list', 'todo cli', 'task manager'],
+    packages = find_packages(exclude=[]),
+    install_requires = ['inquirer', 'prettytable'],
     entry_points = {
         'console_scripts': [
-            'RedList=RedList.main:main',
-        ]
-    }
+            'redlist=main:main',
+        ],
+    },
 )
