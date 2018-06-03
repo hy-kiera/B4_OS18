@@ -1,5 +1,5 @@
 import sqlite3
-import duecheck as dc
+from . import duecheck as dc
 
 def auto_fin():
     conn = sqlite3.connect("task.db")
