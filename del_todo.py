@@ -32,6 +32,4 @@ def del_todo():
 	cur.execute(del_record, [delete_data])
 	conn.commit()
 
-	print("Deleted", delete_data)
-
 	print("")

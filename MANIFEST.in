@@ -5,3 +5,6 @@ include README.md
 include setup.cfg
 prune __pycache__
 prune .git
+prune build
+prune dist
+recursive-exclude *.egg-info *
