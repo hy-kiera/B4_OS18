@@ -1,5 +1,5 @@
 import sqlite3
-import duecheck as dc
+from . import duecheck as dc
 
 def modify_todo():
 	conn = sqlite3.connect("task.db")

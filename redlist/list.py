@@ -1,25 +1,23 @@
 import sqlite3
-import category as ctg
+from . import category as ctg
 from prettytable import PrettyTable
 
-import inquirer
 
 conn = sqlite3.connect("task.db")
 cur = conn.cursor()
 # table col : id, what, due, importance, category, finished
 
 def list_todo_due():
-	""""show todo list by due"""
 	slct_data = "select * from todo where finished = ? order by due asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	
-	    
+
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -27,16 +25,15 @@ def list_todo_due():
 	print("")
 
 def list_todo_importance():
-	"""show todo list by importance"""
-	slct_data = "select * from todo where finished = ? order by importance asc, what asc"
+	slct_data = "select * from todo where finished = ? order by importance desc, what desc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	    
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -44,16 +41,15 @@ def list_todo_importance():
 	print("")
 
 def list_todo_what():
-	"""show todo list by what"""
 	slct_data = "select * from todo where finished = ? order by what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	    
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -61,16 +57,15 @@ def list_todo_what():
 	print("")
 
 def list_todo_category(category):	# 가나다순
-	"""show todo list in category that usr selected"""
 	slct_data = "select * from todo where category = ? and finished = ? order by category asc"
 	cur.execute(slct_data, [category,'n'])
 	records = cur.fetchall()
-	    
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -78,21 +73,19 @@ def list_todo_category(category):	# 가나다순
 	print("")
 
 def list_main():
-	opt = [
-			inquirer.List('opt',
-				message="Choose list option",
-				choices=['due', 'what', 'importance', 'category'],
-			),
-		]
-	answers = inquirer.prompt(opt)
-	
-	if answers['opt'] == 'due':
+	opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
+	while not opt.isdigit():
+		opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
+	opt = int(opt)
+	while opt < 1 or opt > 4:
+		opt = int(input("(1: due, 2: what, 3: importance, 4: category)? "))
+	if opt == 1:
 		list_todo_due()
-	elif answers['opt'] == 'what':
+	elif opt == 2:
 		list_todo_what()
-	elif answers['opt'] == 'importance':
+	elif opt == 3:
 		list_todo_importance()
-	elif answers['opt'] == 'category':
+	elif opt == 4:
 		ctg.show_category()
-		c = str(input("What cateogry do you want to list? "))
+		c = str(input("What category do you want to list? "))
 		list_todo_category(c)

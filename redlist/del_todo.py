@@ -1,5 +1,5 @@
 import sqlite3
-import create_table as ct
+from . import create_table as ct
 
 def del_todo():
 	conn = sqlite3.connect("task.db")

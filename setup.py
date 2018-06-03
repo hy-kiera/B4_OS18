@@ -26,7 +26,7 @@ setup(
     ],
     entry_points = {
         'console_scripts': [
-            'RedList=RedList.main:main',
+            'RedList=redlist.main:main',
         ]
     }
 )
