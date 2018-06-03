@@ -13,13 +13,13 @@ def list_todo_due():
 	slct_data = "select * from todo where finished = ? order by due asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	
-	    
+
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -31,12 +31,12 @@ def list_todo_importance():
 	slct_data = "select * from todo where finished = ? order by importance asc, what desc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	    
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -48,12 +48,12 @@ def list_todo_what():
 	slct_data = "select * from todo where finished = ? order by what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-	    
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -65,12 +65,12 @@ def list_todo_category(category):	# 가나다순
 	slct_data = "select * from todo where category = ? and finished = ? order by category asc"
 	cur.execute(slct_data, [category,'n'])
 	records = cur.fetchall()
-	    
+
 	x = PrettyTable()
 
 	x.field_names = ["Finished", "Importance", "What", "due", "category"]
 
-	
+
 	for row in records:
 		x.add_row([row[5], row[3], row[1], row[2], row[4]])
 	if not len(records) == 0:
@@ -85,7 +85,7 @@ def list_main():
 			),
 		]
 	answers = inquirer.prompt(opt)
-	
+
 	if answers['opt'] == 'due':
 		list_todo_due()
 	elif answers['opt'] == 'what':

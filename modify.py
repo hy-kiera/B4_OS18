@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sqlite3
 import duecheck as dc
 
@@ -26,7 +27,7 @@ def modify_todo():
 			modify = str(input())
 		else:
 			break
-	
+
 	org_data = "select * from todo where what = ?"
 	cur.execute(org_data, [modify])
 	org_record = cur.fetchall()
