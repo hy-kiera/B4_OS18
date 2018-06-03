@@ -1,5 +1,9 @@
 # ignore cache files
-.pyc
+*.pyc
 
 # ignore db files
-.db
+*.db
+
+# ignore build folders
+build/
+*.edd-info *

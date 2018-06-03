@@ -32,9 +32,13 @@ def modify_todo():
 	cur.execute(org_data, [modify])
 	org_record = cur.fetchall()
 	# table col : id, what, due, importance, category, finished
+<<<<<<< HEAD
 
 	print(org_record[0][1], org_record[0][2], org_record[0][3], org_record[0][4], org_record[0][5])
 
+=======
+
+>>>>>>> 5933506e956969a784570f739582d33537a90eee
 	what_m = str(input("What? "))
 	if what_m == '':
 		what_m = org_record[0][1]
@@ -76,6 +80,6 @@ def modify_todo():
 
 	sql = "update todo set what = ?, due = ?, importance = ?, category = ?, finished = ? where what = ?"
 
-	cur.execute(sql, (what_m, due_m, int(importance_m), category_m, finished_m, modify))
+	cur.execute(sql, [what_m, due_m, int(importance_m), category_m, finished_m, modify])
 	conn.commit()
 	print("")

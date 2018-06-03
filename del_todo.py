@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 import sqlite3
 import create_table as ct
 
@@ -32,7 +32,5 @@ def del_todo():
 	del_record = "delete from todo where what = ?"
 	cur.execute(del_record, [delete_data])
 	conn.commit()
-
-	print("Deleted", delete_data)
 
 	print("")
