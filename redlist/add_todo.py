@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sqlite3
 from . import create_table as ct
 from . import duecheck as dc
@@ -22,7 +23,7 @@ def add_todo():
             break
         else:
             print('Invaild input! Please check your input')
-    
+
     while True:
         importance = str(input("Importance? (1 ~ 5) "))
         if importance == '':
@@ -33,7 +34,7 @@ def add_todo():
         else:
             print('Invaild input! Please check your input')
 
-    category = str(input("Category? "))    
+    category = str(input("Category? "))
     if category == '':
         category = 'GENERAL'
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 import sqlite3
 from . import duecheck as dc
 
