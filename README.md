@@ -35,4 +35,3 @@ A simple schedule managing program made with python
  - Enter 'what' you want to delete
 
 * Want to know what category is in list? Press 'c'
-
