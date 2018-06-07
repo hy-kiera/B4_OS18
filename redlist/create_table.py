@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*- 
 import sqlite3
+from pathlib import Path
 
-conn = sqlite3.connect("task.db")
+home_dir = str(Path.home())
+conn = sqlite3.connect(home_dir + "/task.db")
 cur = conn.cursor()
 
 def create_table():
-
+    
     table_create_sql = """create table if not exists todo (
             id integer primary key autoincrement,
             what text not null,

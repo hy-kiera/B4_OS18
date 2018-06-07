@@ -1,27 +1,42 @@
 # -*- coding: utf-8 -*-
 import sqlite3
-from . import logo as lg
-from . import add_todo as at
-from . import ls as li
-from . import create_table as ct
-from . import modify as md
-from . import del_todo as dl
-from . import category as ctg
-from . import auto_finish as af
+try:
+	from . import logo as lg
+	from . import add_todo as at
+	from . import ls as li
+	from . import create_table as ct
+	from . import modify as md
+	from . import del_todo as dl
+	from . import category as ctg
+	from . import auto_finish as af
+	from . import duecheck as dc
+except:
+	import logo as lg
+	import add_todo as at
+	import ls as li
+	import create_table as ct
+	import modify as md
+	import del_todo as dl
+	import category as ctg
+	import auto_finish as af
+	import duecheck as dc
 
 import inquirer
 from optparse import OptionParser
 import sys
+from pathlib import Path
+
+
+home_dir = str(Path.home())
+conn = sqlite3.connect(home_dir + "/task.db")
+cur = conn.cursor()
 
 
 def main():
-	lg.print_logo()
 	ct.create_table()
 	cmd_line()
 
 def chk_is_there(x):
-	conn = sqlite3.connect("task.db")
-	cur = conn.cursor()
 	cmp_data = "select distinct what from todo"
 	cur.execute(cmp_data)
 	cmp_records = cur.fetchall()
@@ -50,11 +65,9 @@ def cmd_line():
 
 	options, args = parser.parse_args()
 
-	conn = sqlite3.connect("task.db")
-	cur = conn.cursor()
-
 	# no option
 	if len(args) == 0 and not (options.add or options.list or options.modify or options.delete or options.category):
+		lg.print_logo()
 		run_program()
 
 	if options.add:
