@@ -1,13 +1,15 @@
 import sqlite3
-import category as ctg
+from . import category as ctg
 from prettytable import PrettyTable
 
+import inquirer
 
 conn = sqlite3.connect("task.db")
 cur = conn.cursor()
 # table col : id, what, due, importance, category, finished
 
 def list_todo_due():
+	""""show todo list by due"""
 	slct_data = "select * from todo where finished = ? order by due asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
@@ -25,7 +27,8 @@ def list_todo_due():
 	print("")
 
 def list_todo_importance():
-	slct_data = "select * from todo where finished = ? order by importance desc, what desc"
+	"""show todo list by importance"""
+	slct_data = "select * from todo where finished = ? order by importance asc, what desc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
 
@@ -41,6 +44,7 @@ def list_todo_importance():
 	print("")
 
 def list_todo_what():
+	"""show todo list by what"""
 	slct_data = "select * from todo where finished = ? order by what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
@@ -57,6 +61,7 @@ def list_todo_what():
 	print("")
 
 def list_todo_category(category):	# 가나다순
+	"""show todo list in category that usr selected"""
 	slct_data = "select * from todo where category = ? and finished = ? order by category asc"
 	cur.execute(slct_data, [category,'n'])
 	records = cur.fetchall()
@@ -73,19 +78,33 @@ def list_todo_category(category):	# 가나다순
 	print("")
 
 def list_main():
-	opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
-	while not opt.isdigit():
-		opt = input("(1: due, 2: what, 3: importance, 4: category)? ")
-	opt = int(opt)
-	while opt < 1 or opt > 4:
-		opt = int(input("(1: due, 2: what, 3: importance, 4: category)? "))
-	if opt == 1:
+	opt = [
+			inquirer.List('opt',
+				message="Choose list option",
+				choices=['due', 'what', 'importance', 'category'],
+			),
+		]
+	answers = inquirer.prompt(opt)
+
+	if answers['opt'] == 'due':
 		list_todo_due()
-	elif opt == 2:
+	elif answers['opt'] == 'what':
 		list_todo_what()
-	elif opt == 3:
+	elif answers['opt'] == 'importance':
 		list_todo_importance()
-	elif opt == 4:
+	elif answers['opt'] == 'category':
 		ctg.show_category()
-		c = str(input("What category do you want to list? "))
+		c = str(input("What cateogry do you want to list? "))
+		cmp_data = "select distinct category from todo"
+		cur.execute(cmp_data)
+		cmp_records = cur.fetchall()
+		cmp_list = []
+		for i in range(len(cmp_records)):
+			cmp_list.append(cmp_records[i][0])
+		while True:
+			if not c in cmp_list:
+				print("There is not", c, "Please enter the 'what' in table")
+				c = str(input())
+			else:
+				break
 		list_todo_category(c)

@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 import sqlite3
-import logo as lg
-import add_todo as at
-import ls as li
-import create_table as ct
-import modify as md
-import del_todo as dl
-import category as ctg
-import auto_finish as af
-import duecheck as dc
+from . import logo as lg
+from . import add_todo as at
+from . import ls as li
+from . import create_table as ct
+from . import modify as md
+from . import del_todo as dl
+from . import category as ctg
+from . import auto_finish as af
 
 import inquirer
 from optparse import OptionParser

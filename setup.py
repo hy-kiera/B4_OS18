@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name = 'redlist',
-    version = '0.1',
+    version = '0.0.2',
     description = 'A simple schedule managing cli app',
     long_description = long_description,
     long_description_content_type='text/markdown',
@@ -18,7 +18,7 @@ setup(
     author_email = 'bb.kiera@gmail.com',
     license = 'MIT LICENSE',
     classifiers = [
-        'Environment :: Consol',
+        'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.2',
@@ -32,7 +32,7 @@ setup(
     install_requires = ['inquirer', 'prettytable'],
     entry_points = {
         'console_scripts': [
-            'redlist=main:main',
-        ],
-    },
+            'RedList=redlist.main:main',
+        ]
+    }
 )

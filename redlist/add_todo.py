@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sqlite3
-import create_table as ct
-import duecheck as dc
+from . import create_table as ct
+from . import duecheck as dc
 
 def add_todo():
     conn = sqlite3.connect("task.db")
