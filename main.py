@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sqlite3
 import logo as lg
 import add_todo as at
@@ -13,11 +14,12 @@ import inquirer
 from optparse import OptionParser
 import sys
 
+
 def main():
 	lg.print_logo()
 	ct.create_table()
 	cmd_line()
-	
+
 def chk_is_there(x):
 	conn = sqlite3.connect("task.db")
 	cur = conn.cursor()
@@ -92,7 +94,7 @@ def cmd_line():
 		modify_data = options.modify
 		# check whether there is the modify val in table
 		chk_is_there(modify_data)
-		
+
 		what, due, importance, category, finished = args[0], args[1]+" "+args[2], args[3], args[4], args[5]
 		sql = "update todo set what = ?, due = ?, importance = ?, category = ?, finished = ? where what = ?"
 		cur.execute(sql, [what, due, int(importance), category, finished, modify_data])
@@ -111,6 +113,7 @@ def cmd_line():
 
 	if options.category:
 		ctg.show_category()
+
 
 
 def run_program():
@@ -137,7 +140,6 @@ def run_program():
 		elif answers['mode'] == 'Quit':
 			break
 		af.auto_fin()
-		
 
 if __name__=="__main__":
 	main()

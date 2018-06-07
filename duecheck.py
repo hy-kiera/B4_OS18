@@ -1,4 +1,4 @@
-#yyyy-mm-dd hh:mm:ss
+# -*- coding: utf-8 -*- 
 def isdue(due):
 	dateNtime = due.split(' ')
 	if len(dateNtime) != 2:
