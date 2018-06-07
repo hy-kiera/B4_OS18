@@ -3,18 +3,13 @@
 # RedList
 A simple schedule managing program made with python
 
-# Contributors
-| Participant    | Role      |
-|----------------|-----------|
-| Moon SeongIn   | PM        |
-| Yun SungHo     | Designer  |
-| Lee Hayung     | Presenter |
-| Nam YunJae     | Developer |
-| Lee Gukgon     | Secretary |
+## Getting Started
+### Installation
+```
+pip3 install redlist
+```
 
-# Installation Process
-
-# Getting Started
+### Tutorial
 1. Want to add your schedule? Press 'a'
    - What? : enter a name of schedule
    - Due? : enter a due date of your schedule. Please enter with correct form (ex 2018-05-29 23:59:59)
@@ -36,3 +31,18 @@ A simple schedule managing program made with python
 
 5. Want to know what category is in list? Press 'c'
 
+
+## Bulit With
+- Python
+
+
+## Contributors
+| Participant    | Role      |
+|----------------|-----------|
+| Moon SeongIn   | PM        |
+| Yun SungHo     | Designer  |
+| Lee Hayung     | Presenter |
+| Nam YunJae     | Developer |
+| Lee Gukgon     | Secretary |
+
+## License
