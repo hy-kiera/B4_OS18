@@ -21,3 +21,4 @@ script:
   - RedList -l 5
   - RedList -l jaram
   - RedList -c
+  - RedList --v
