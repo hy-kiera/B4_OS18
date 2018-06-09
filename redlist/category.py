@@ -1,8 +1,10 @@
 import sqlite3
 from prettytable import PrettyTable
+from pathlib import Path
 
 def show_category():
-	conn = sqlite3.connect("task.db")
+	home_dir = str(Path.home())
+	conn = sqlite3.connect(home_dir + "/task.db")
 	cur = conn.cursor()
 
 	slct_data = "select distinct category from todo where 1 order by category asc"

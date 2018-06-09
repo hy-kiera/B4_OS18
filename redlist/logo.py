@@ -1,4 +1,7 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
+from colorama import Fore
+# from . import __version__ as VERSION
+
 def print_logo():
 	"""
 	   ___         __  __   _     __
@@ -7,7 +10,8 @@ def print_logo():
 	/_/|_|\__/\_,_/ /____/_/___/\__/
 	by Team Avengers
 	MIT LICENSE
+	VERSION 0.0.2
 	"""
 
-	print("   ___         __  __   _     __ \n  / _ \___ ___/ / / /  (_)__ / /_\n / , _/ -_) _  / / /__/ (_-</ __/\n/_/|_|\__/\_,_/ /____/_/___/\__/ \n")
-	print("by Team Avengers\nMIT LICENSE\n\n")
+	print(Fore.RED + "   ___         __  __   _     __ \n  / _ \___ ___/ / / /  (_)__ / /_\n / , _/ -_) _  / / /__/ (_-</ __/\n/_/|_|\__/\_,_/ /____/_/___/\__/ \n")
+	print("by Team Avengers\nMIT LICENSE\nVERSION 0.0.2\n\n" + Fore.RESET)

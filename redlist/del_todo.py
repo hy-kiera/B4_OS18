@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
 import sqlite3
-from . import create_table as ct
+try:
+	from . import create_table as ct
+	from . import ls as li
+except:
+	import create_table as ct
+	import ls as li
+from pathlib import Path
 
 def del_todo():
-	conn = sqlite3.connect("task.db")
+	home_dir = str(Path.home())
+	conn = sqlite3.connect(home_dir + "/task.db")
 	cur = conn.cursor()
 
-	slct_data = "select * from todo where finished = 0 order by what asc"
+	slct_data = "select * from todo where finished = 'n' order by what asc"
 	# finished = 0 일때를 보여줄지, finished 값과 상관없이 보여줄지 고민
 	cur.execute(slct_data)
 	records = cur.fetchall()
-	for row in records:
-		print(row[5], row[3], row[1], row[2], row[4])
+
+	li.print_list(records)
 
 	delete_data = str(input("What todo do you delete? Please enter the 'what' "))
 
