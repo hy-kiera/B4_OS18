@@ -26,11 +26,14 @@ from optparse import OptionParser
 import sys
 from pathlib import Path
 
-
+version = '0.1.0'
 home_dir = str(Path.home())
 conn = sqlite3.connect(home_dir + "/task.db")
 cur = conn.cursor()
 
+def version():
+	version = '0.0.2'
+	return version
 
 def main():
 	ct.create_table()
@@ -52,7 +55,7 @@ def cmd_line():
 	"""Usr inputs option among -a(add todo), -l(list todo), -m(modify todo), -d(delete todo), -c(show category)"""
 
 	usage = "Usage: %prog [options]"
-	parser = OptionParser(usage=usage, version="%prog 1.0")
+	parser = OptionParser(usage=usage, version="%prog {}".format(version()))
 	parser.add_option("-a", dest="add", action='store', type=str, default=False, help="add a new todo",
 						metavar="[what] [due(yyyy-mm-dd hh:mm:ss)] [importance(0~5)] [category]")
 	parser.add_option("-l", dest="list", action='store', type=str, default=False, help="list todos by option",
