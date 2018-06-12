@@ -20,7 +20,7 @@ def list_todo_due():
 	slct_data = "select * from todo where finished = ? order by due asc, what asc"
 	cur.execute(slct_data,['n'])
 	records = cur.fetchall()
-
+	print(Fore.RED + "\nORDER BY DUE" + Fore.RESET)
 	print_list(records)
 
 
