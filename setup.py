@@ -1,6 +1,6 @@
 from os.path import abspath, dirname, join
 from setuptools import find_packages, setup
-
+from . import main
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -8,12 +8,12 @@ with open("README.md", "r") as fh:
 
 setup(
     name = 'redlist',
-    version = '0.0.2',
+    version = main.version(),
     description = 'A simple schedule managing cli app',
     long_description = long_description,
     long_description_content_type='text/markdown',
     url = 'https://github.com/Ramenseller/RedList',
-    download_url     = 'https://github.com/Ramenseller/RedList/archive/master.tar.gz',
+    download_url = 'https://github.com/Ramenseller/RedList/archive/master.tar.gz',
     author = 'Hayeong Lee',
     author_email = 'bb.kiera@gmail.com',
     license = 'MIT LICENSE',
