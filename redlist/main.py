@@ -52,7 +52,7 @@ def cmd_line():
 	"""Usr inputs option among -a(add todo), -l(list todo), -m(modify todo), -d(delete todo), -c(show category)"""
 
 	usage = "Usage: %prog [options]"
-	parser = OptionParser(usage=usage, version="%prog {}".format(version()))
+	parser = OptionParser(usage=usage, version="%prog 0.0.5")
 	parser.add_option("-a", dest="add", action='store', type=str, default=False, help="add a new todo",
 						metavar="[what] [due(yyyy-mm-dd hh:mm:ss)] [importance(0~5)] [category]")
 	parser.add_option("-l", dest="list", action='store', type=str, default=False, help="list todos by option",

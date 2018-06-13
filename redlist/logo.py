@@ -9,8 +9,8 @@ def print_logo():
 	/_/|_|\__/\_,_/ /____/_/___/\__/
 	by Team Avengers
 	MIT LICENSE
-	VERSION 0.0.4
+	VERSION 0.0.5
 	"""
 
 	print(Fore.RED + "   ___         __  __   _     __ \n  / _ \___ ___/ / / /  (_)__ / /_\n / , _/ -_) _  / / /__/ (_-</ __/\n/_/|_|\__/\_,_/ /____/_/___/\__/ \n")
-	print("by Team Avengers\nMIT LICENSE\nVERSION 0.0.4\n\n" + Fore.RESET)
+	print("by Team Avengers\nMIT LICENSE\nVERSION 0.0.5\n\n" + Fore.RESET)
