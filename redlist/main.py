@@ -52,14 +52,14 @@ def cmd_line():
 	"""Usr inputs option among -a(add todo), -l(list todo), -m(modify todo), -d(delete todo), -c(show category)"""
 
 	usage = "Usage: %prog [options]"
-	parser = OptionParser(usage=usage, version="%prog 0.0.5")
-	parser.add_option("-a", dest="add", action='store', type=str, default=False, help="add a new todo",
+	parser = OptionParser(usage=usage, version="%prog 0.0.6")
+	parser.add_option("-a", dest="add", action='store', nargs=5, type=str, default=False, help="add a new todo",
 						metavar="[what] [due(yyyy-mm-dd hh:mm:ss)] [importance(0~5)] [category]")
-	parser.add_option("-l", dest="list", action='store', type=str, default=False, help="list todos by option",
+	parser.add_option("-l", dest="list", action='store', nargs=1, type=str, default=False, help="list todos by option",
 						metavar="what || due || importance || category [category]")
-	parser.add_option("-m", dest="modify", action='store', type=str, default=False, help="modify the todo",
+	parser.add_option("-m", dest="modify", action='store', nargs=7, type=str, default=False, help="modify the todo",
 						metavar="[org_what] [what] [due(yyyy-mm-dd hh:mm:ss)] [importance(0~5)] [category] [finished(y/n)]")
-	parser.add_option("-d", dest="delete", action='store', type=str, default=False, help="delete the todo",
+	parser.add_option("-d", dest="delete", action='store', nargs=1, type=str, default=False, help="delete the todo",
 						metavar="[what]")
 	parser.add_option("-c", dest="category", action='store_true', default=False, help="show categories")
 
