@@ -1,6 +1,5 @@
 from os.path import abspath, dirname, join
 from setuptools import find_packages, setup
-from . import main
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -8,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name = 'redlist',
-    version = main.version(),
+    version = '0.1.0',
     description = 'A simple schedule managing cli app',
     long_description = long_description,
     long_description_content_type='text/markdown',
