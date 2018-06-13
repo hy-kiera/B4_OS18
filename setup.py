@@ -28,7 +28,7 @@ setup(
     install_requires = ['inquirer', 'prettytable', 'colorama'],
     entry_points = {
         'console_scripts': [
-            'RedList=redlist.main:main',
+            'redlist=redlist.main:main',
         ]
     }
 )

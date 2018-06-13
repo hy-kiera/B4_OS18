@@ -31,8 +31,7 @@ def del_todo():
 		cmp_list.append(cmp_records[i][0])
 	while True:
 		if not delete_data in cmp_list:
-			print("There is not", delete_data, "Please enter the 'what' in table")
-			delete_data = str(input())
+			delete_data = str(input("There is not" + ' \'' + delete_data + ' \'' + "Please enter the 'what' in table"))
 		else:
 			break
 

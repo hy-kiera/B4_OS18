@@ -47,7 +47,7 @@ def list_todo_category(category):	# 가나다순
 	slct_data = "select * from todo where category = ? and finished = ? order by category asc"
 	cur.execute(slct_data, [category,'n'])
 	records = cur.fetchall()
-	print(Fore.RED + "\nORDER BY WHAT IN "+category + Fore.RESET)
+	print(Fore.RED + "\nORDER BY WHAT IN " + category + Fore.RESET)
 	print_list(records)
 
 

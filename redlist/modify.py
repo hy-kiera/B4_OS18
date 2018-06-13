@@ -30,8 +30,7 @@ def modify_todo():
 		cmp_list.append(cmp_records[i][0])
 	while True:
 		if not modify in cmp_list:
-			print("There is not", modify, "Please enter the 'what' in table")
-			modify = str(input())
+			modify = str(input("There is not"+ ' \'' + modify + '\' ' + "Please enter the 'what' in table"))
 		else:
 			break
 
@@ -70,7 +69,7 @@ def modify_todo():
 		category_m = org_record[0][4]
 
 	while True:
-		finished_m = input("Finished (y: yes, n: no)? ")
+		finished_m = str(input("Finished (y: yes, n: no)? "))
 		if finished_m == '':
 			finished_m = org_record[0][5]
 			break
