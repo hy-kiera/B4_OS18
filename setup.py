@@ -28,7 +28,7 @@ setup(
     ],
     keywords = ['todo list', 'todo cli', 'task manager'],
     packages = find_packages(exclude=[]),
-    install_requires = ['inquirer', 'prettytable'],
+    install_requires = ['inquirer', 'prettytable', 'colorama'],
     entry_points = {
         'console_scripts': [
             'RedList=redlist.main:main',
