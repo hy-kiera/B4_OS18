@@ -31,9 +31,6 @@ home_dir = str(Path.home())
 conn = sqlite3.connect(home_dir + "/task.db")
 cur = conn.cursor()
 
-def version():
-	version = '0.0.3'
-	return version
 
 def main():
 	ct.create_table()
