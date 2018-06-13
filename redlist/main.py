@@ -26,13 +26,13 @@ from optparse import OptionParser
 import sys
 from pathlib import Path
 
-version = '0.1.0'
+
 home_dir = str(Path.home())
 conn = sqlite3.connect(home_dir + "/task.db")
 cur = conn.cursor()
 
 def version():
-	version = '0.0.2'
+	version = '0.0.3'
 	return version
 
 def main():
