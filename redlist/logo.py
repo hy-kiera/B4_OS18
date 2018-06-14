@@ -13,4 +13,4 @@ def print_logo():
 	"""
 
 	print(Fore.RED + "   ___         __  __   _     __ \n  / _ \___ ___/ / / /  (_)__ / /_\n / , _/ -_) _  / / /__/ (_-</ __/\n/_/|_|\__/\_,_/ /____/_/___/\__/ \n")
-	print("by Team Avengers\nMIT LICENSE\nVERSION 0.0.7\n\n" + Fore.RESET)
+	print("by Team Avengers\nMIT LICENSE\nVERSION 0.0.8\n\n" + Fore.RESET)

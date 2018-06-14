@@ -52,7 +52,7 @@ def cmd_line():
 	"""Usr inputs option among -a(add todo), -l(list todo), -m(modify todo), -d(delete todo), -c(show category)"""
 
 	usage = "Usage: %prog [options]"
-	parser = OptionParser(usage=usage, version="%prog 0.0.7")
+	parser = OptionParser(usage=usage, version="%prog 0.0.8")
 	parser.add_option("-a", dest="add", action='store', type=str, default=False, help="add a new todo",
 						metavar="[what] [due(yyyy-mm-dd hh:mm:ss)] [importance(0~5)] [category]")
 	parser.add_option("-l", dest="list", action='store', type=str, default=False, help="list todos by option",
@@ -91,7 +91,7 @@ def cmd_line():
 			li.list_todo_importance()
 		elif op == 'category':
 			# check whether category is exsited in todo table
-			c = args
+			c = args[0]
 			cmp_data = "select distinct category from todo"
 			cur.execute(cmp_data)
 			cmp_records = cur.fetchall()
