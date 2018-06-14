@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name = 'redlist',
-    version = '0.0.6',
+    version = '0.0.7',
     description = 'A simple schedule managing cli app',
     long_description = long_description,
     long_description_content_type='text/markdown',
