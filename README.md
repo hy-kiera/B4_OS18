@@ -41,7 +41,7 @@ pip3 install redlist
 |----------------|-----------|
 | Moon SeongIn   | PM        |
 | Yun SungHo     | Designer  |
-| Lee Hayung     | Presenter |
+| Lee Hayeong    | Developer |
 | Nam YunJae     | Developer |
 | Lee Gukgon     | Secretary |
 
